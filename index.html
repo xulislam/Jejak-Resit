@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jejak Resit</title>
+<meta name="description" content="Jejak jumlah belanja anda di setiap kedai daripada gambar resit.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#D8E3F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#060A13" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jejak Resit">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="extra.css">
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <h1>Jejak Resit</h1>
+    <div class="seg" role="group" aria-label="Tempoh">
+      <button type="button" id="p-all" aria-pressed="true">Semua</button>
+      <button type="button" id="p-month" aria-pressed="false">Bulan ini</button>
+    </div>
+  </div>
+
+  <section class="sheet install" id="install" hidden aria-label="Pasang aplikasi">
+    <div>
+      <strong>Pasang Jejak Resit</strong>
+      <p class="hint" id="install-hint">Buka terus dari skrin utama, tanpa bar pelayar.</p>
+    </div>
+    <button type="button" class="btn primary" id="b-install" hidden>Pasang</button>
+  </section>
+
+  <section class="sheet summary" aria-label="Ringkasan">
+    <p class="label">Jumlah belanja</p>
+    <p class="big" id="grand"><small>RM</small>0.00</p>
+    <p class="meta" id="meta">0 resit &middot; 0 kedai</p>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-add">
+    <h2 id="h-add">Tambah resit</h2>
+    <p class="hint" id="add-hint">Ambil atau pilih gambar resit. Nama kedai dan jumlah dibaca dalam peranti ini, kemudian anda semak sebelum simpan.</p>
+    <div class="actions" id="actions">
+      <button type="button" class="btn primary" id="b-cam">Ambil gambar</button>
+      <button type="button" class="btn" id="b-pick">Pilih gambar</button>
+      <button type="button" class="btn" id="b-manual">Isi manual</button>
+    </div>
+    <input type="file" id="f-cam" accept="image/*" capture="environment" hidden>
+    <input type="file" id="f-pick" accept="image/*" hidden>
+
+    <form id="rv" hidden autocomplete="off">
+      <div class="preview">
+        <img id="pv" alt="Resit yang dipilih" hidden>
+        <div class="fields">
+          <div class="field">
+            <label for="i-store">Nama kedai</label>
+            <input id="i-store" list="store-list" required maxlength="80">
+            <datalist id="store-list"></datalist>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="i-amt">Jumlah (RM)</label>
+              <input id="i-amt" class="mono" type="number" inputmode="decimal" step="0.01" min="0.01" required>
+            </div>
+            <div class="field">
+              <label for="i-date">Tarikh</label>
+              <input id="i-date" type="date" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="state" id="rv-state" role="status"></p>
+      <div class="formactions">
+        <button type="submit" class="btn primary" id="b-save">Simpan resit</button>
+        <button type="button" class="btn" id="b-cancel">Batal</button>
+      </div>
+    </form>
+    <p class="state" id="status" role="status" style="margin-top:10px"></p>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-stores">
+    <h2 id="h-stores">Belanja mengikut kedai</h2>
+    <div id="empty" class="empty">
+      <strong>Belum ada resit</strong>
+      Tambah resit pertama anda. Setiap kali anda membeli di kedai yang sama, jumlahnya ditambah ke kedai itu.
+    </div>
+    <ul class="stores" id="stores"></ul>
+  </section>
+
+  <section class="sheet" aria-labelledby="h-data">
+    <h2 id="h-data">Data anda</h2>
+    <p class="hint">Resit disimpan dalam peranti ini sahaja. Buat sandaran sebelum menukar telefon atau memadam data pelayar.</p>
+    <div class="datarow">
+      <button type="button" class="btn" id="b-csv">Eksport CSV</button>
+      <button type="button" class="btn" id="b-json">Sandaran</button>
+      <button type="button" class="btn" id="b-restore">Pulihkan</button>
+    </div>
+    <input type="file" id="f-restore" accept="application/json,.json" hidden>
+    <p class="state" id="data-state" role="status" style="margin-top:10px"></p>
+  </section>
+</main>
+<script src="parse.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

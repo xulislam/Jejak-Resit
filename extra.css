@@ -1,0 +1,17 @@
+/* Tambahan untuk aplikasi berdiri sendiri: set semula asas, kawasan selamat telefon, kad pasang. */
+html{color-scheme:light;-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;min-height:100dvh;
+  padding-top:calc(18px + env(safe-area-inset-top,0px));
+  padding-bottom:calc(56px + env(safe-area-inset-bottom,0px));
+  -webkit-tap-highlight-color:transparent;
+}
+img{max-width:100%}
+[hidden]{display:none!important}
+button,input{font-family:inherit}
+.install{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.install strong{font-family:var(--font-display);font-size:16px}
+.install .hint{margin:2px 0 0}
+.install>div{min-width:0;flex:1 1 200px}
+.tiny{font-size:12px;color:var(--muted);margin:10px 0 0}
+.datarow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}

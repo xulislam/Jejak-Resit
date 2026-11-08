@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "Jejak Resit",
+  "short_name": "Jejak Resit",
+  "description": "Jejak jumlah belanja anda di setiap kedai daripada gambar resit.",
+  "lang": "ms",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#D8E3F1",
+  "theme_color": "#D8E3F1",
+  "categories": ["finance", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
